@@ -1,0 +1,26 @@
+{
+  "name": "jest_test_odin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zach-huang/jest_test_Odin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zach-huang/jest_test_Odin/issues"
+  },
+  "homepage": "https://github.com/zach-huang/jest_test_Odin#readme",
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "babel-jest": "^29.5.0",
+    "jest": "^29.5.0"
+  }
+}
