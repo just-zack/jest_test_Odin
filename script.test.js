@@ -79,12 +79,26 @@ it("CC single word", () => {
   expect(script.caesarCipher("hello", 3)).toBe("khoor");
 });
 
-it("CC z=> a", () => {
+it("CC late alphabets", () => {
   expect(script.caesarCipher("yesterday", 3)).toBe("bhvwhugdb");
 });
 
-it("CC z=> a", () => {
+it("CC Capitals and spaces", () => {
   expect(script.caesarCipher("today I went for a run", 3)).toBe(
     "wrgdb L zhqw iru d uxq"
+  );
+});
+
+it("CC Mixed Case", () => {
+  expect(script.caesarCipher("THisISmyTest", 3)).toBe("WKlvLVpbWhvw");
+});
+
+it("CC Different shift value", () => {
+  expect(script.caesarCipher("THisISmyTest", 10)).toBe("DRscSCwiDocd");
+});
+
+it("CC Shift value over 26", () => {
+  expect(script.caesarCipher("THisISmyTest", 27)).toBe(
+    "Pick a shift number between 0 and 26"
   );
 });

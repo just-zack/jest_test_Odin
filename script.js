@@ -70,15 +70,20 @@ function caesarCipher(string, shift) {
   let stringArray = string.split("");
   let shiftedArray = [];
   let shiftedString;
-  for (let i = 0; i < stringArray.length; i++) {
-    shiftedArray.push(shiftLetter(identifyLetter(stringArray[i]), shift));
-    shiftedString = shiftedArray.join("");
-  }
-  return shiftedString;
+  if (shift >= 0 && shift <= 26) {
+    for (let i = 0; i < stringArray.length; i++) {
+      shiftedArray.push(identifyCapital(identifyLetter(stringArray[i]), shift));
+      shiftedString = shiftedArray.join("");
+    }
+    return shiftedString;
+  } else return "Pick a shift number between 0 and 26";
 }
 
 function identifyLetter(letter) {
-  let isCapital = "false";
+  let value = {
+    capital: false,
+    number: null,
+  };
   let alphabet = [
     "a",
     "b",
@@ -137,11 +142,24 @@ function identifyLetter(letter) {
   ];
   for (let i = 0; i < alphabet.length; i++) {
     if (letter == " ") {
-      return " ";
+      value.number = " ";
+      return value;
     } else if (letter == alphabet[i]) {
-      return i;
+      value.number = i;
+      return value;
+    } else if (letter == alphabetCapital[i]) {
+      value.capital = true;
+      value.number = i;
+      return value;
     }
   }
+}
+
+function identifyCapital(value, shift) {
+  if (value.capital === true) {
+    return shiftLetterCapital(value.number, shift);
+  }
+  return shiftLetter(value.number, shift);
 }
 
 function shiftLetter(value, shift) {
@@ -173,6 +191,16 @@ function shiftLetter(value, shift) {
     "y",
     "z",
   ];
+  let shiftedAlphabet = "";
+  if (value === " ") {
+    shiftedAlphabet = " ";
+  } else if (value + shift > 25) {
+    shiftedAlphabet = alphabet[value + shift - 26];
+  } else shiftedAlphabet = alphabet[value + shift];
+  return shiftedAlphabet;
+}
+
+function shiftLetterCapital(value, shift) {
   let alphabetCapital = [
     "A",
     "B",
@@ -205,8 +233,8 @@ function shiftLetter(value, shift) {
   if (value === " ") {
     shiftedAlphabet = " ";
   } else if (value + shift > 25) {
-    shiftedAlphabet = alphabet[value + shift - 26];
-  } else shiftedAlphabet = alphabet[value + shift];
+    shiftedAlphabet = alphabetCapital[value + shift - 26];
+  } else shiftedAlphabet = alphabetCapital[value + shift];
   return shiftedAlphabet;
 }
 
