@@ -32,8 +32,43 @@ let calculator = {
   },
 };
 
+let analyzeArray = {
+  avg: function (array) {
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+      sum += array[i];
+    }
+    return sum / array.length;
+  },
+
+  min: function (array) {
+    let min = array[0];
+    for (let i = 0; i < array.length; i++) {
+      if (min >= array[i]) {
+        min = array[i];
+      }
+    }
+    return min;
+  },
+
+  max: function (array) {
+    let max = array[0];
+    for (let i = 0; i < array.length; i++) {
+      if (max <= array[i]) {
+        max = array[i];
+      }
+    }
+    return max;
+  },
+
+  length: function (array) {
+    return array.length;
+  },
+};
+
 export default {
   capitalize,
   reverseString,
   calculator,
+  analyzeArray,
 };

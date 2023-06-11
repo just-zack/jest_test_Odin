@@ -54,3 +54,21 @@ it("Multiplication", () => {
 it("Division", () => {
   expect(script.calculator.divide(1, 2)).toBe(0.5);
 });
+
+//analyze array tests
+
+it("Array Average", () => {
+  expect(script.analyzeArray.avg([1, 8, 3, 4, 2, 6])).toBe(4);
+});
+
+it("Array Min", () => {
+  expect(script.analyzeArray.min([1, 8, 3, 4, 2, 6])).toBe(1);
+});
+
+it("Array Max", () => {
+  expect(script.analyzeArray.max([1, 8, 3, 4, 2, 6])).toBe(8);
+});
+
+it("Array Average", () => {
+  expect(script.analyzeArray.length([1, 8, 3, 4, 2, 6])).toBe(6);
+});
