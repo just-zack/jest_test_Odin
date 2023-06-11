@@ -72,3 +72,19 @@ it("Array Max", () => {
 it("Array Average", () => {
   expect(script.analyzeArray.length([1, 8, 3, 4, 2, 6])).toBe(6);
 });
+
+//caesar cipher tests
+
+it("CC single word", () => {
+  expect(script.caesarCipher("hello", 3)).toBe("khoor");
+});
+
+it("CC z=> a", () => {
+  expect(script.caesarCipher("yesterday", 3)).toBe("bhvwhugdb");
+});
+
+it("CC z=> a", () => {
+  expect(script.caesarCipher("today I went for a run", 3)).toBe(
+    "wrgdb L zhqw iru d uxq"
+  );
+});

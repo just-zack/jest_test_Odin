@@ -66,9 +66,154 @@ let analyzeArray = {
   },
 };
 
+function caesarCipher(string, shift) {
+  let stringArray = string.split("");
+  let shiftedArray = [];
+  let shiftedString;
+  for (let i = 0; i < stringArray.length; i++) {
+    shiftedArray.push(shiftLetter(identifyLetter(stringArray[i]), shift));
+    shiftedString = shiftedArray.join("");
+  }
+  return shiftedString;
+}
+
+function identifyLetter(letter) {
+  let isCapital = "false";
+  let alphabet = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
+  let alphabetCapital = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
+  for (let i = 0; i < alphabet.length; i++) {
+    if (letter == " ") {
+      return " ";
+    } else if (letter == alphabet[i]) {
+      return i;
+    }
+  }
+}
+
+function shiftLetter(value, shift) {
+  let alphabet = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
+  let alphabetCapital = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
+  let shiftedAlphabet = "";
+  if (value === " ") {
+    shiftedAlphabet = " ";
+  } else if (value + shift > 25) {
+    shiftedAlphabet = alphabet[value + shift - 26];
+  } else shiftedAlphabet = alphabet[value + shift];
+  return shiftedAlphabet;
+}
+
 export default {
   capitalize,
   reverseString,
   calculator,
   analyzeArray,
+  caesarCipher,
 };
